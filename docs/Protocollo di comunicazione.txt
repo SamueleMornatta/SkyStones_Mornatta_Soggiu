@@ -1,0 +1,36 @@
+PROTOCOLLO DI COMUNICAZIONE
+
+0 - invito
+1 - turno
+2 - chiusura
+
+*si stabilisce la connessione tcp*
+*porta fissa: 6969*
+
+INVITO:
+p1 request:	0[nickname]	//gioca con me pls
+p2 reply:		0[y/n][nickname?]	//va bene sos
+p1 reply:		0[y]		//sono pronto
+
+*inizia il turno*
+
+TURNO:
+1[nuova_pietra_e_nuovo_stato_adiacenti];[nuovi_potenziamenti];[0/1/2/3]
+	0) tutto regolare, si continua
+	1) mi arrendo
+	2) ho vinto
+	3) hai vinto
+
+132990115
+1) 	codice turno
+32) 	coordinate nuova pietra
+99)	id nuova pietra
+0) turno regolare
+1) presente nuovo potenziamento 
+15) nuovo potenziamento attivo (opzionale)
+
+[x][x][x][x][x]
+[x][x][x][0][x]
+[x][x][3][N][1]
+[x][x][x][2][x]
+[x][x][x][x][x]

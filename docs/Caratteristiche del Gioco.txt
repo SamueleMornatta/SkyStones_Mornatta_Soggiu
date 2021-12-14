@@ -1,0 +1,42 @@
+CARATTERISTICHE DEL GIOCO
+
+CARTE
+	Collezione carte
+		Ci sono 100 carte disponibili.
+	Mazzo
+		Si scelgono per il mazzo 30 carte.
+		Dal mazzo ad ogni turno vengono estratte carte per completare la mano di 5 carte.
+	Carte
+		Ogni carta ha:
+			- Immagine
+			- Per ogni lato punti attacco (da 0 a 4 di default -> massimo 5 tramite powerup)
+			- Colore (giocatore corrente blu, giocatore avversario rosso)
+			- Tipo (macchina, natura, folletto...)
+		
+	Potenziamenti
+		- Estratto dopo 3 turni, dopo 6 turni e dopo 9 turni tramite scelta tra 3 scelte
+		- Durata fino a fine partita
+	
+MENU
+	- Gioca
+	- Scegli mazzo
+	- Pagina How To Play
+	- Esci
+	
+GIOCO
+	Griglia 5x5.
+	Il giocatore che contatta, dopo aver ricevuto l'accetta, lancia la moneta che decide chi inizia.
+	Si parte con una mano di 5 carte.
+	Nel proprio turno:
+		- Si pesca una carta per completare la mano di 5 carte
+		- Si mette una carta
+		- Si calcolano i potenziamenti
+		- Calcolo finale del danno
+		- Eventuale cambio colore
+	Ai turni 3 (6 carte in campo), 6 (12 carte in campo) e 9 (18 carte in campo) scelta potenziamenti
+	Il gioco finisce quando la griglia è completata e si calcola chi ha più carte.
+	
+	CALCOLO DEL DANNO
+	Messa la carta si controllano i potenziamenti, si guardano le 4 caselle ai lati e:
+	 - Se la carta a fianco è nemica e ha meno attacco, cambia colore.
+	 - Ai bordi scoperti l'attacco rimane.
