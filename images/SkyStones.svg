@@ -1,0 +1,65 @@
+<svg width="1180.3999999999999px" height="196.4px" xmlns="http://www.w3.org/2000/svg" viewBox="-340.19999999999993 -23.200000000000003 1180.3999999999999 196.4" style="background: rgb(255, 255, 255);" preserveAspectRatio="xMidYMid"><defs>
+  <filter id="editing-scratch" x="-100%" y="-100%" width="300%" height="300%">
+    <!-- COLOR -->
+    <feFlood flood-color="#3d0f08" flood-opacity="0.75" result="COLOR-blu"></feFlood>
+    <feFlood flood-color="#651707" flood-opacity="0.4" result="COLOR-red"></feFlood>
+    <!-- COLOR END -->
+
+    <!-- Texture -->
+    <feTurbulence baseFrequency=".05" type="fractalNoise" numOctaves="3" seed="0" result="Texture_10"></feTurbulence>
+    <feColorMatrix type="matrix" values="0 0 0 0 0,
+    0 0 0 0 0,
+    0 0 0 0 0,
+    0 0 0 -2.1 1.1" in="Texture_10" result="Texture_20"></feColorMatrix>
+
+    <feColorMatrix result="Texture_30" type="matrix" values="0 0 0 0 0,
+    0 0 0 0 0,
+    0 0 0 0 0,
+    0 0 0 -1.7 1.8" in="Texture_10"></feColorMatrix>
+    <!-- Texture -->
+
+    <!-- FILL -->
+    <feOffset dx="-3" dy="4" in="SourceAlpha" result="FILL_10"></feOffset>
+    <feDisplacementMap scale="17" in="FILL_10" in2="Texture_10" result="FILL_20"></feDisplacementMap>
+    <feComposite operator="in" in="Texture_30" in2="FILL_20" result="FILL_40"></feComposite>
+    <feComposite operator="in" in="COLOR-blu" in2="FILL_40" result="FILL_50"></feComposite>
+    <!-- FILL END-->
+
+    <!-- OUTLINE -->
+    <feMorphology operator="dilate" radius="3" in="SourceGraphic" result="OUTLINE_10"></feMorphology>
+    <feComposite operator="out" in="OUTLINE_10" in2="SourceGraphic" result="OUTLINE_20"></feComposite>
+    <feDisplacementMap scale="7" in="OUTLINE_20" in2="Texture_10" result="OUTLINE_30"></feDisplacementMap>
+    <feComposite operator="arithmetic" k2="-1" k3="1" in="Texture_20" in2="OUTLINE_30" result="OUTLINE_40"></feComposite>
+    <!-- OUTLINE END-->
+
+    <!-- BEVEL OUTLINE -->
+    <feConvolveMatrix order="8,8" divisor="1" kernelMatrix="1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 " in="SourceGraphic" result="BEVEL_10"></feConvolveMatrix>
+    <feMorphology operator="dilate" radius="2" in="BEVEL_10" result="BEVEL_20"></feMorphology>
+    <feComposite operator="out" in="BEVEL_20" in2="BEVEL_10" result="BEVEL_30"></feComposite>
+    <feDisplacementMap scale="7" in="BEVEL_30" in2="Texture_10" result="BEVEL_40"></feDisplacementMap>
+    <feComposite operator="arithmetic" k2="-1" k3="1" in="Texture_20" in2="BEVEL_40" result="BEVEL_50"></feComposite>
+    <feOffset dx="-7" dy="-7" in="BEVEL_50" result="BEVEL_60"></feOffset>
+    <feComposite operator="out" in="BEVEL_60" in2="OUTLINE_10" result="BEVEL_70"></feComposite>
+    <!-- BEVEL OUTLINE END -->
+
+    <!-- BEVEL FILL -->
+    <feOffset dx="-9" dy="-9" in="BEVEL_10" result="BEVEL-FILL_10"></feOffset>
+    <feComposite operator="out" in="BEVEL-FILL_10" in2="OUTLINE_10" result="BEVEL-FILL_20"></feComposite>
+    <feDisplacementMap scale="17" in="BEVEL-FILL_20" in2="Texture_10" result="BEVEL-FILL_30"></feDisplacementMap>
+    <feComposite operator="in" in="COLOR-red" in2="BEVEL-FILL_30" result="BEVEL-FILL_50"></feComposite> <!-- -->
+    <!-- BEVEL FILL END-->
+
+    <feMerge result="merge2">
+     <feMergeNode in="BEVEL-FILL_50"></feMergeNode>
+     <feMergeNode in="BEVEL_70"></feMergeNode>
+     <feMergeNode in="FILL_50"></feMergeNode>
+      <feMergeNode in="OUTLINE_40"></feMergeNode>
+    </feMerge>
+  </filter>
+</defs>
+<g filter="url(#editing-scratch)"><g transform="translate(-174.64502143859863, 113.28000068664551)"><path d="M98.38 0L7.92 0L7.92-20.24L30.89-16.90L30.89-12.50L75.42-12.50L75.42-20.24L7.92-30.89L7.92-61.60L98.38-61.60L98.38-40.22L75.42-43.74L75.42-49.10L30.89-49.10L30.89-40.74L98.38-30.10L98.38 0ZM117.30-10.12L106.30-7.57L106.30-21.12L117.30-23.67L117.30-61.60L139.30-61.60L139.30-28.60L172.30-36.08L172.30-46.64L194.30-46.64L194.30-27.72L168.34-21.91L180.66-11.44L194.30-11.44L194.30 0L168.34 0L148.54-17.60L139.30-15.40L139.30 0L117.30 0L117.30-10.12ZM210.14-35.20L199.58-35.20L199.58-46.64L225.54-46.64L248.86-17.60L267.78-46.64L291.10-46.64L249.74 14.96L222.46 14.96L222.46 3.52L233.90 3.52L237.86-2.20L210.14-35.20ZM387.73 0L297.26 0L297.26-20.24L320.23-16.90L320.23-12.50L364.76-12.50L364.76-20.24L297.26-30.89L297.26-61.60L387.73-61.60L387.73-40.22L364.76-43.74L364.76-49.10L320.23-49.10L320.23-40.74L387.73-30.10L387.73 0ZM406.65-35.20L395.65-35.20L395.65-46.64L406.65-46.64L406.65-61.60L428.65-61.60L428.65-46.64L450.21-46.64L450.21-35.20L428.65-35.20L428.65-14.08L433.93-11.44L467.81-11.44L467.81 0L428.21 0L406.65-10.56L406.65-35.20ZM557.13 0L477.49 0L477.49-46.64L557.13-46.64L557.13 0ZM499.49-35.20L499.49-11.44L535.13-11.44L535.13-35.20L499.49-35.20ZM594.97 0L572.97 0L572.97-46.64L588.72-46.64L593.21-42.24L597.61-46.64L630.17-46.64L651.73-36.08L651.73 0L629.73 0L629.73-32.56L624.45-35.20L594.97-35.20L594.97 0ZM669.77-35.20L658.77-35.20L658.77-46.64L747.65-46.64L747.65-23.32L691.77-15.40L691.77-11.44L725.65-11.44L725.65-15.40L747.65-17.60L747.65 0L669.77 0L669.77-35.20ZM691.77-35.20L691.77-26.75L725.65-31.24L725.65-35.20L691.77-35.20ZM841.37 0L763.49 0L763.49-17.60L785.49-15.40L785.49-11.44L819.37-11.44L819.37-15.40L763.49-23.32L763.49-46.64L841.37-46.64L841.37-29.04L819.37-31.24L819.37-35.20L785.49-35.20L785.49-31.68L841.37-23.76L841.37 0Z" fill="#3d0f08"></path></g></g><style>text {
+  font-size: 64px;
+  font-family: Arial Black;
+  dominant-baseline: central;
+  text-anchor: middle;
+}</style></svg>
