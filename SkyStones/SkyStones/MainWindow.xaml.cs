@@ -15,6 +15,14 @@ using System.Windows.Shapes;
 
 namespace SkyStones
 {
+    /*
+    * PALETTE:
+    * #2D2424 marrone 1
+    * #5C3D2E marrone 2
+    * #E0C097 marrone 3
+    * #14DD75 verde
+    * #BB0104 rosso
+     */
     /// <summary>
     /// Logica di interazione per MainWindow.xaml
     /// </summary>
@@ -23,6 +31,11 @@ namespace SkyStones
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnEsci_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

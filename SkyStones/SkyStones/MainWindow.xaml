@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkyStones"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SkyStones" Height="675" Width="1000" WindowStartupLocation="CenterScreen" Icon="S.png" ResizeMode="CanResizeWithGrip">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF5C3D2E" Offset="1"/>
+                <GradientStop Color="#FF2D2424"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image x:Name="imgTit" HorizontalAlignment="Center" Height="111" Margin="64,10,52,0" VerticalAlignment="Top" Width="876" Source="SkyStones_nobg.png" Stretch="Fill" />
+        <Button x:Name="btnGioca" Content="Gioca" HorizontalAlignment="Center" Margin="451,280,401,335" VerticalAlignment="Center" Width="140" Height="29"/>
+        <Button x:Name="btnCome" Content="Come giocare" HorizontalAlignment="Center" Margin="451,314,401,302" VerticalAlignment="Center" Width="140" Height="28"/>
+        <Button x:Name="btnEsci" Content="Esci" HorizontalAlignment="Center" Margin="451,347,401,268" VerticalAlignment="Center" Width="140" Click="btnEsci_Click" Height="29"/>
+
+
     </Grid>
 </Window>
