@@ -106,5 +106,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="S.png" />
+    <Resource Include="SkyStones_nobg.png" />
+    <Resource Include="SkyStones.png" />
+    <Resource Include="SkyStones.jpg" />
+    <Content Include="SkyStones.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
