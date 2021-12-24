@@ -12,8 +12,8 @@ namespace SkyStones
     class SharedResources
     {
         private static SharedResources _instance;
-        private List<Card> collection;
-        private List<Upgrade> upgrades;
+        public List<Card> collection;
+        public List<Upgrade> upgrades;
         private static readonly Object _sync = new Object();
         private SharedResources() {
             collection = ReadAllCards();
