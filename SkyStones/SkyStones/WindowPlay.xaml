@@ -10,12 +10,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="viewPlayers" HorizontalAlignment="Left" Height="260" Margin="20,98,0,0" VerticalAlignment="Top" Width="507">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+        <ListView Margin="10,76,247,10" Name="viewPlayers">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Name: " />
+                        <TextBlock Text="{Binding nickname}" FontWeight="Bold" />
+                        <TextBlock Text=" " />
+                        <Button Click="Invite_Click">INVITE</Button>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <GridSplitter HorizontalAlignment="Left" Height="419" Margin="560,0,0,0" VerticalAlignment="Top" Width="5"/>
         <Label Content="Invite a player" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Bauhaus 93" Height="61" Width="255"/>

@@ -17,6 +17,7 @@ namespace SkyStones
         public List<Card> collection;
         public List<Upgrade> upgrades;
         public List<Invite> invites;
+        public List<LocalPlayer> playersFound;
         public TcpClient gameSocket { set; get;}
         public string nickname;
         private static readonly Object _sync = new Object();
@@ -24,6 +25,7 @@ namespace SkyStones
             collection = ReadAllCards();
             upgrades = ReadAllUpgrades();
             invites = new List<Invite>();
+            playersFound = new List<LocalPlayer>();
             Random rand = new Random();
             nickname = "guest" + rand.Next(10000, 99999).ToString();
         }

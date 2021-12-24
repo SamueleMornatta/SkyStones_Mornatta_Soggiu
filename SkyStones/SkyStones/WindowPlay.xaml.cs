@@ -30,29 +30,13 @@ namespace SkyStones
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            UdpClient udpClient = new UdpClient(6969);
-            var data = Encoding.UTF8.GetBytes("d");
-            udpClient.Send(data, data.Length, "255.255.255.255", 6969);
-            var from = new IPEndPoint(0, 0);
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    var recvBuffer = udpClient.Receive(ref from);
-                    string msg = Encoding.UTF8.GetString(recvBuffer);
-                    if (msg.ElementAt(0) == 'h')
-                    {
-                        string plynick = msg.Substring(1);
-                        string ip = from.Address.ToString();
-                        this.Dispatcher.Invoke((Action)(() =>
-                        {
-                            viewPlayers.Items.Add(new LocalPlayer(plynick, ip));
-                        }));
-                    }
-                }
-            });
+            UDPListener listen = new UDPListener();
+            listen.sendPing();
+            listen.Start();
             viewInvites.ItemsSource = null;
             viewInvites.ItemsSource = SharedResources.Instance.invites;
+            viewPlayers.ItemsSource = null;
+            viewPlayers.ItemsSource = SharedResources.Instance.playersFound;
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -61,6 +45,8 @@ namespace SkyStones
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            viewPlayers.ItemsSource = null;
+            viewPlayers.ItemsSource = SharedResources.Instance.playersFound;
             viewInvites.ItemsSource = null;
             viewInvites.ItemsSource = SharedResources.Instance.invites;
         }
@@ -88,6 +74,10 @@ namespace SkyStones
             SharedResources.Instance.invites.Remove(inv);
             viewInvites.ItemsSource = null;
             viewInvites.ItemsSource = SharedResources.Instance.invites;
+        }
+        private void Invite_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
