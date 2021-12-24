@@ -59,8 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Deck.cs" />
+    <Compile Include="Invite.cs" />
     <Compile Include="LocalPlayer.cs" />
     <Compile Include="SharedResources.cs" />
+    <Compile Include="UDPListener.cs" />
     <Compile Include="Upgrade.cs" />
     <Compile Include="WindowPlay.xaml.cs">
       <DependentUpon>WindowPlay.xaml</DependentUpon>
@@ -116,6 +119,9 @@
     <Resource Include="SkyStones.png" />
     <Resource Include="SkyStones.jpg" />
     <Content Include="SkyStones.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace SkyStones
@@ -12,12 +14,20 @@ namespace SkyStones
     class SharedResources
     {
         private static SharedResources _instance;
-        private List<Card> collection;
-        private List<Upgrade> upgrades;
+        public List<Card> collection;
+        public List<Upgrade> upgrades;
+        public List<Invite> invites;
+        public List<LocalPlayer> playersFound;
+        public TcpClient gameSocket { set; get;}
+        public string nickname;
         private static readonly Object _sync = new Object();
         private SharedResources() {
             collection = ReadAllCards();
             upgrades = ReadAllUpgrades();
+            invites = new List<Invite>();
+            playersFound = new List<LocalPlayer>();
+            Random rand = new Random();
+            nickname = "guest" + rand.Next(10000, 99999).ToString();
         }
         public static SharedResources Instance
         {
@@ -49,7 +59,7 @@ namespace SkyStones
                     tmp.setID(items.ElementAt(i).ID);
                     tmp.setAtt(items.ElementAt(i).att);
                     tmp.setTipo(items.ElementAt(i).tipo);
-                    BitmapImage img = new BitmapImage(new Uri(items.ElementAt(i).Ipath));
+                    BitmapImage img = new BitmapImage(new Uri(items.ElementAt(i).Ipath, UriKind.Relative));
                     tmp.setI(img);
                     cards.Add(tmp);
                 }
@@ -71,6 +81,14 @@ namespace SkyStones
                 List<Upgrade> items = JsonConvert.DeserializeObject<List<Upgrade>>(json);
                 return items;
             }
+        }
+        public void addInvite(Invite inv)
+        {
+            invites.Add(inv);
+        }
+        public void removeInvite(Invite inv)
+        {
+            invites.Remove(inv);
         }
     }
 }
