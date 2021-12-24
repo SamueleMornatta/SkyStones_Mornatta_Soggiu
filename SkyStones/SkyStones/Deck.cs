@@ -61,10 +61,17 @@ namespace SkyStones
         };
         public void deckToJSON()
         {
+            List<cardID> items = new List<cardID>();
+            for (int i = 0; i < deck.Count; i++)
+            {
+                cardID tmp = new cardID();
+                tmp.ID = deck.ElementAt(i).getID();
+                items.Add(tmp);
+            }
             using (StreamWriter file = File.CreateText(@"Deck.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, deck);
+                serializer.Serialize(file, items);
             }
         }
         public int getAmmountCards()

@@ -119,5 +119,8 @@
     <Resource Include="SkyStones.jpg" />
     <Content Include="SkyStones.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

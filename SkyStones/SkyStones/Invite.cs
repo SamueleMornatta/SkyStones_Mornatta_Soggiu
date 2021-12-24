@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SkyStones
 {
@@ -14,7 +15,7 @@ namespace SkyStones
         Thread t;
         TcpClient connection;
         bool sender;
-        string othernick;
+        public string othernick { get; set; }
         public Invite(TcpClient connection)
         {
             this.connection = connection;
@@ -48,12 +49,14 @@ namespace SkyStones
                             data = System.Text.Encoding.ASCII.GetBytes("0y");
                             stream.Write(data, 0, data.Length);
                             active = false;
-                            // AGGIUNGERE COME GAME_SOCKET
+                            SharedResources.Instance.gameSocket = connection;
+                            var w = Application.Current.Windows[0];
+                            w.Close();
+                            // PASSARE ALLA SCHERMATA DI GAMEPLAY
                         }
                         else if (responseData.ElementAt(1) == 'n')
                         {
                             active = false;
-                            // INVITO DECLINATO
                         }
                     }
                     else
@@ -61,12 +64,14 @@ namespace SkyStones
                         if (responseData.ElementAt(1) == 'y')
                         {
                             active = false;
-                            // AGGIUNGERE COME GAME_SOCKET
+                            SharedResources.Instance.gameSocket = connection;
+                            var w = Application.Current.Windows[0];
+                            w.Close();
+                            // PASSARE ALLA SCHERMATA DI GAMEPLAY
                         }
                         else if (responseData.ElementAt(1) == 'n')
                         {
                             active = false;
-                            // INVITO DECLINATO
                         }
                     }
                 }
@@ -93,6 +98,10 @@ namespace SkyStones
             NetworkStream stream = connection.GetStream();
             byte[] data = System.Text.Encoding.ASCII.GetBytes("0n");
             stream.Write(data, 0, data.Length);
+        }
+        public void setNick(string tmp)
+        {
+            othernick = tmp;
         }
     }
 }

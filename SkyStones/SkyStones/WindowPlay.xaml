@@ -19,13 +19,19 @@
         </ListView>
         <GridSplitter HorizontalAlignment="Left" Height="419" Margin="560,0,0,0" VerticalAlignment="Top" Width="5"/>
         <Label Content="Invite a player" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Bauhaus 93" Height="61" Width="255"/>
-        <ListView x:Name="viewInvites" HorizontalAlignment="Left" Height="399" Margin="570,10,0,0" VerticalAlignment="Top" Width="212">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+        <ListView Margin="570,38,10,10" Name="viewInvites">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Name: " />
+                        <TextBlock Text="{Binding othernick}" FontWeight="Bold" />
+                        <TextBlock Text=" " />
+                        <Button Click="Accept_Click">YES</Button>
+                        <Button Click="Deny_Click">NO</Button>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-
+        <Label Content="Pending Invites" HorizontalAlignment="Left" Margin="570,-7,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" FontFamily="Bauhaus 93" Height="45" Width="191"/>
     </Grid>
 </Window>
