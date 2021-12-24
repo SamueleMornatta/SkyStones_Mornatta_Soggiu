@@ -14,10 +14,15 @@ namespace SkyStones
         private static SharedResources _instance;
         public List<Card> collection;
         public List<Upgrade> upgrades;
+        public List<Invite> invites;
+        public string nickname;
         private static readonly Object _sync = new Object();
         private SharedResources() {
             collection = ReadAllCards();
             upgrades = ReadAllUpgrades();
+            invites = new List<Invite>();
+            Random rand = new Random();
+            nickname = "guest" + rand.Next(10000, 99999).ToString();
         }
         public static SharedResources Instance
         {
@@ -71,6 +76,14 @@ namespace SkyStones
                 List<Upgrade> items = JsonConvert.DeserializeObject<List<Upgrade>>(json);
                 return items;
             }
+        }
+        public void addInvite(Invite inv)
+        {
+            invites.Add(inv);
+        }
+        public void removeInvite(Invite inv)
+        {
+            invites.Remove(inv);
         }
     }
 }

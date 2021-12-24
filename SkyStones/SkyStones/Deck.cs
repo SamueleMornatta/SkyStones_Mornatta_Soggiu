@@ -95,5 +95,12 @@ namespace SkyStones
                 return false;
             }
         }
+        public Card drawRandomCard()
+        {
+            Random rand = new Random();
+            int index = rand.Next(1, maxCards);
+            Card tmp = deck.ElementAt(index - 1);
+            return tmp;
+        }
     }
 }
