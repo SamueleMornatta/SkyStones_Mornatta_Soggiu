@@ -36,40 +36,40 @@ namespace SkyStones
             this.tipo = tipo;
         }
 
-        int getID()
+        public int getID()
         {
             return ID;
         }
 
-        BitmapImage getI()
+        public BitmapImage getI()
         {
             return I;
         }
-        int[] getAtt()
+        public int[] getAtt()
         {
             return att;
         }
-        string getTipo()
+        public string getTipo()
         {
             return tipo;
         }
-        
-        void setID(int ID)
+
+        public void setID(int ID)
         {
             this.ID = ID;
         }
 
-        void setI(BitmapImage I)
+        public void setI(BitmapImage I)
         {
             this.I = I;
         }
 
-        void setAtt(int[] att)
+        public void setAtt(int[] att)
         {
             this.att = att;
         }
 
-        void setTipo(string tipo)
+        public void setTipo(string tipo)
         {
             this.tipo = tipo;
         }
