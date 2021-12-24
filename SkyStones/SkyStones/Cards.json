@@ -1,0 +1,12 @@
+[ 
+    { "ID": "1", 
+      "att": [1,2,3,4], 
+      "I": "img/foto1.png", 
+      "tipo": "Terra"
+	},
+	{ "ID": "2", 
+      "att": [5,6,7,8], 
+      "I": "img/foto2.png", 
+      "tipo": "Aria"
+	},
+] 
