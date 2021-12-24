@@ -28,9 +28,11 @@ namespace SkyStones
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SharedResources shared;
         public MainWindow()
         {
             InitializeComponent();
+            shared = SharedResources.Instance;
         }
 
         private void btnEsci_Click(object sender, RoutedEventArgs e)
