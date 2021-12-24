@@ -37,5 +37,13 @@ namespace SkyStones
         {
             this.Close();
         }
+
+        private void btnGioca_Click(object sender, RoutedEventArgs e)
+        {
+            WindowPlay W = new WindowPlay();
+            W.Show();
+
+            this.Hide();
+        }
     }
 }
