@@ -2,11 +2,11 @@
     { "ID": "1", 
       "att": [1,2,3,4], 
       "Ipath": "img/foto1.png", 
-      "tipo": "Terra"
+      "tipo": "earth"
 	},
 	{ "ID": "2", 
       "att": [5,6,7,8], 
       "Ipath": "img/foto2.png", 
-      "tipo": "Aria"
+      "tipo": "air"
 	},
 ] 

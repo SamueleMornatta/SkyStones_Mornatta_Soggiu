@@ -45,7 +45,7 @@ namespace SkyStones
                 List<Card> cards = new List<Card>();
                 for (int i = 0; i < items.Count; i++)
                 {
-                    for (int j = 0; j < shared.collection.Count; i++)
+                    for (int j = 0; j < shared.collection.Count; j++)
                     {
                         if (shared.collection.ElementAt(j).getID() == items.ElementAt(i).ID)
                         {
@@ -108,6 +108,14 @@ namespace SkyStones
             int index = rand.Next(1, maxCards);
             Card tmp = deck.ElementAt(index - 1);
             return tmp;
+        }
+        public Card getCardAt(int index)
+        {
+            return deck.ElementAt(index);
+        }
+        public List<Card> getDeck()
+        {
+            return deck;
         }
     }
 }

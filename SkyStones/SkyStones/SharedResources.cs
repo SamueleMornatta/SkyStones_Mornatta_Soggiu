@@ -90,5 +90,17 @@ namespace SkyStones
         {
             invites.Remove(inv);
         }
+        public List<Card> getCategory(string cat)
+        {
+            List<Card> cards = new List<Card>();
+            for (int i = 0; i < collection.Count; i++)
+            {
+                if (collection.ElementAt(i).tipo == cat)
+                {
+                    cards.Add(collection.ElementAt(i));
+                }
+            }
+            return cards;
+        }
     }
 }
