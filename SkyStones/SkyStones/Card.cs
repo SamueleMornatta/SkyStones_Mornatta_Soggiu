@@ -10,10 +10,10 @@ namespace SkyStones
 {
     class Card
     {
-        private int ID;
-        private int[] att;
-        private BitmapImage I;
-        private String tipo;
+        public int ID { get; set; }
+        public int[] att { get; set; }
+        public BitmapImage I { get; set; }
+        public String tipo { get; set; }
 
 
         public Card()

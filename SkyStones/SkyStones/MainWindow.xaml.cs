@@ -29,10 +29,12 @@ namespace SkyStones
     public partial class MainWindow : Window
     {
         private SharedResources shared;
+        private Deck deck;
         public MainWindow()
         {
             InitializeComponent();
             shared = SharedResources.Instance;
+            deck = Deck.Instance;
         }
 
         private void btnEsci_Click(object sender, RoutedEventArgs e)
@@ -44,8 +46,14 @@ namespace SkyStones
         {
             WindowPlay W = new WindowPlay();
             W.Show();
+            this.Close();
+        }
 
-            this.Hide();
+        private void btnColl_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCollection wc = new WindowCollection();
+            wc.Show();
+            this.Close();
         }
     }
 }
