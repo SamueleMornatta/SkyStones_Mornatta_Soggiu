@@ -35,6 +35,8 @@ namespace SkyStones
             InitializeComponent();
             shared = SharedResources.Instance;
             deck = Deck.Instance;
+            TCPReceive tr= new TCPReceive(this);
+            tr.start();
         }
 
         private void btnEsci_Click(object sender, RoutedEventArgs e)

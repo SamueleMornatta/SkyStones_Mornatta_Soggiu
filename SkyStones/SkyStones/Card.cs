@@ -14,6 +14,7 @@ namespace SkyStones
         public int[] att { get; set; }
         public BitmapImage I { get; set; }
         public String tipo { get; set; }
+        public String nome { get; set; }
 
 
         public Card()

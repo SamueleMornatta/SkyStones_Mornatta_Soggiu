@@ -18,6 +18,7 @@
         <Button x:Name="btnCome" Content="COME GIOCARE" HorizontalAlignment="Center" Margin="451,314,401,302" VerticalAlignment="Center" Width="140" Height="28" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
         <Button x:Name="btnEsci" Content="ESCI" HorizontalAlignment="Center" Margin="451,381,401,234" VerticalAlignment="Center" Width="140" Click="btnEsci_Click" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
         <Button x:Name="btnColl" Content="COLLEZIONE" HorizontalAlignment="Center" Margin="451,347,401,268" VerticalAlignment="Center" Width="140" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20" Click="btnColl_Click"/>
+        <Label x:Name="Statorich" Content="Label" HorizontalAlignment="Left" Margin="10,614,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

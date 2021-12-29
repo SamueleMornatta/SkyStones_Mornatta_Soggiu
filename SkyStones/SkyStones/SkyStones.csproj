@@ -63,6 +63,7 @@
     <Compile Include="Invite.cs" />
     <Compile Include="LocalPlayer.cs" />
     <Compile Include="SharedResources.cs" />
+    <Compile Include="TCPReceive.cs" />
     <Compile Include="UDPListener.cs" />
     <Compile Include="Upgrade.cs" />
     <Compile Include="WindowCollection.xaml.cs">
