@@ -36,7 +36,7 @@ namespace SkyStones
             shared = SharedResources.Instance;
             deck = Deck.Instance;
             TCPReceive tr= new TCPReceive(this);
-            tr.start();
+            //tr.start();
         }
 
         private void btnEsci_Click(object sender, RoutedEventArgs e)
@@ -47,8 +47,11 @@ namespace SkyStones
         private void btnGioca_Click(object sender, RoutedEventArgs e)
         {
             WindowPlay W = new WindowPlay();
-            W.Show();
+            gameplay G = new gameplay();
+            G.Show();
             this.Close();
+            //W.Show();
+            //this.Close();
         }
 
         private void btnColl_Click(object sender, RoutedEventArgs e)

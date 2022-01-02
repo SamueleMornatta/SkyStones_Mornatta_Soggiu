@@ -60,6 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Deck.cs" />
+    <Compile Include="gameplay.xaml.cs">
+      <DependentUpon>gameplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Invite.cs" />
     <Compile Include="LocalPlayer.cs" />
     <Compile Include="SharedResources.cs" />
@@ -72,6 +75,10 @@
     <Compile Include="WindowPlay.xaml.cs">
       <DependentUpon>WindowPlay.xaml</DependentUpon>
     </Compile>
+    <Page Include="gameplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
