@@ -27,7 +27,7 @@
                                         <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                         <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                         <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                        <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                        <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                         <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                         <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                         <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
@@ -80,7 +80,7 @@
                                                     <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                                    <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                                    <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                                     <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                                     <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                                     <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
@@ -120,7 +120,7 @@
                                                     <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                                    <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                                    <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                                     <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                                     <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                                     <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
@@ -163,7 +163,7 @@
                                                     <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                                    <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                                    <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                                     <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                                     <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                                     <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
@@ -203,7 +203,7 @@
                                                     <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                                    <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                                    <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                                     <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                                     <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                                     <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
@@ -256,7 +256,7 @@
                                                     <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
                                                     <Image Source="{Binding Path=I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                                                    <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
+                                                    <TextBlock Text="{Binding nome}" Margin="88,99,30,95" Grid.Row="1" />
                                                     <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
                                                     <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
                                                     <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />

@@ -31,9 +31,13 @@ namespace SkyStones
             tabavatar.Visibility = Visibility.Hidden;
             secretcode = new Key[]{ Key.A, Key.V , Key.A , Key.T , Key.A , Key.R};
             Card mornatta = new Card(1000, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
+            mornatta.nome = "Samuele Mornatta";
             Card soggiu = new Card(1001, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
+            soggiu.nome = "Marco Soggiu";
             Card roncoroni = new Card(1002, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
+            roncoroni.nome = "Daniele Roncoroni";
             Card marelli = new Card(1003, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
+            marelli.nome = "Giacomo Marelli";
             viewAvatar.Items.Add(mornatta);
             viewAvatar.Items.Add(soggiu);
             viewAvatar.Items.Add(roncoroni);
