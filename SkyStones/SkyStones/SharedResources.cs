@@ -59,6 +59,7 @@ namespace SkyStones
                     tmp.setID(items.ElementAt(i).ID);
                     tmp.setAtt(items.ElementAt(i).att);
                     tmp.setTipo(items.ElementAt(i).tipo);
+                    tmp.nome = items.ElementAt(i).nome;
                     BitmapImage img = new BitmapImage(new Uri(items.ElementAt(i).Ipath, UriKind.Relative));
                     tmp.setI(img);
                     cards.Add(tmp);
@@ -70,8 +71,9 @@ namespace SkyStones
         {
             public int ID;
             public int[] att;
-            public String Ipath;
-            public String tipo;
+            public string nome;
+            public string Ipath;
+            public string tipo;
         }
         public List<Upgrade> ReadAllUpgrades()
         {
