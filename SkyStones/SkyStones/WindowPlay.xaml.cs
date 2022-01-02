@@ -82,7 +82,7 @@ namespace SkyStones
 
         private void btnmaninv_Click(object sender, RoutedEventArgs e)
         {
-
+            Invite inv = new Invite(ipman.Text);
         }
     }
 }
