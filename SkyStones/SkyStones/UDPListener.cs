@@ -32,7 +32,11 @@ namespace SkyStones
                     if (msg.ElementAt(0) == 'd')
                     {
                         string ip = from.Address.ToString();
-                        MessageBox.Show("test" + ip);
+                        string plynick = msg.Substring(1);
+                        if (plynick != SharedResources.Instance.nickname)
+                        {
+                            SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                        }
                         var data = Encoding.UTF8.GetBytes("h" + SharedResources.Instance.nickname);
                         udpClient.Send(data, data.Length, ip, 6969);
                     }
@@ -40,11 +44,9 @@ namespace SkyStones
                     {
                         string plynick = msg.Substring(1);
                         string ip = from.Address.ToString();
-                        MessageBox.Show(plynick + ";" + ip);
                         if (plynick != SharedResources.Instance.nickname)
                         {
                             SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
-                            Trace.WriteLine(SharedResources.Instance.nickname);
                         }
                     }
                 }
@@ -52,7 +54,7 @@ namespace SkyStones
         }
         public void sendPing()
         {
-            var data = Encoding.UTF8.GetBytes("d");
+            var data = Encoding.UTF8.GetBytes("d" + SharedResources.Instance.nickname);
             udpClient.Send(data, data.Length, new IPEndPoint(IPAddress.Broadcast,6969));
         }
     }
