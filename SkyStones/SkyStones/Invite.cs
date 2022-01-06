@@ -23,6 +23,7 @@ namespace SkyStones
             stream = connection.GetStream();
             sender = false;
             t = new Thread(new ThreadStart(Listen));
+            Start();
         }
         public Invite(string ip)
         {
@@ -31,6 +32,7 @@ namespace SkyStones
             SendInvite();
             sender = true;
             t = new Thread(new ThreadStart(Listen));
+            Start();
         }
         public void Listen()
         {
@@ -42,13 +44,9 @@ namespace SkyStones
                 int i;
                 while ((i = stream.Read(data, 0, data.Length)) != 0)
                 {
-                    // Translate data bytes to a ASCII string.
                     responseData = System.Text.Encoding.ASCII.GetString(data, 0, i);
                     Console.WriteLine("Received: {0}", responseData);
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(responseData);
                 }
-                //int bytes = stream.Read(data, 0, data.Length);
-                //responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 if (responseData.ElementAt(0) == '0')
                 {
                     if (sender)
@@ -82,10 +80,15 @@ namespace SkyStones
                         else if (responseData.ElementAt(1) == 'n')
                         {
                             active = false;
+                        } else
+                        {
+                            othernick = responseData.Substring(1);
+                            Console.WriteLine(othernick);
                         }
                     }
                 }
             }
+            Thread.Sleep(0);
         }
         public void Start()
         {
@@ -98,8 +101,15 @@ namespace SkyStones
         }
         public void acceptInvite()
         {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes("0y" + SharedResources.Instance.nickname);
-            stream.Write(data, 0, data.Length);
+            try
+            {
+                byte[] data = System.Text.Encoding.ASCII.GetBytes("0y" + SharedResources.Instance.nickname);
+                stream.Write(data, 0, data.Length);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
         public void denyInvite()
         {

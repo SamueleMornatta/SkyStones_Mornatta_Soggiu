@@ -54,7 +54,7 @@ namespace SkyStones
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Invite inv = button.DataContext as Invite;
+            Invite inv = button.DataContext as Invite;            
             inv.acceptInvite();
             SharedResources.Instance.invites.Remove(inv);
             for (int i = 0; i < SharedResources.Instance.invites.Count; i++)
