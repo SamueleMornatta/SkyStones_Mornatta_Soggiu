@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -14,7 +15,9 @@ namespace SkyStones
         UdpClient udpClient;
         public UDPListener()
         {
-            udpClient = new UdpClient(6969);
+            udpClient = new UdpClient();
+            udpClient.Client.Bind(new IPEndPoint(IPAddress.Any, 6969));
+            udpClient.EnableBroadcast = true;
         }
         public void Start()
         {
@@ -29,6 +32,11 @@ namespace SkyStones
                     if (msg.ElementAt(0) == 'd')
                     {
                         string ip = from.Address.ToString();
+                        string plynick = msg.Substring(1);
+                        if (plynick != SharedResources.Instance.nickname)
+                        {
+                            SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                        }
                         var data = Encoding.UTF8.GetBytes("h" + SharedResources.Instance.nickname);
                         udpClient.Send(data, data.Length, ip, 6969);
                     }
@@ -36,15 +44,18 @@ namespace SkyStones
                     {
                         string plynick = msg.Substring(1);
                         string ip = from.Address.ToString();
-                        SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                        if (plynick != SharedResources.Instance.nickname)
+                        {
+                            SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                        }
                     }
                 }
             });
         }
         public void sendPing()
         {
-            var data = Encoding.UTF8.GetBytes("d");
-            udpClient.Send(data, data.Length, "255.255.255.255", 6969);
+            var data = Encoding.UTF8.GetBytes("d" + SharedResources.Instance.nickname);
+            udpClient.Send(data, data.Length, new IPEndPoint(IPAddress.Broadcast,6969));
         }
     }
 }
