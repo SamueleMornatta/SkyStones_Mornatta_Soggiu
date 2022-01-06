@@ -14,7 +14,8 @@ namespace SkyStones
         UdpClient udpClient;
         public UDPListener()
         {
-            udpClient = new UdpClient(6969);
+            udpClient = new UdpClient();
+            udpClient.Client.Bind(new IPEndPoint(IPAddress.Any, 6969));
         }
         public void Start()
         {
@@ -29,6 +30,7 @@ namespace SkyStones
                     if (msg.ElementAt(0) == 'd')
                     {
                         string ip = from.Address.ToString();
+                        MessageBox.Show("test" + ip);
                         var data = Encoding.UTF8.GetBytes("h" + SharedResources.Instance.nickname);
                         udpClient.Send(data, data.Length, ip, 6969);
                     }
@@ -36,6 +38,7 @@ namespace SkyStones
                     {
                         string plynick = msg.Substring(1);
                         string ip = from.Address.ToString();
+                        MessageBox.Show(plynick + ";" + ip);
                         SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
                     }
                 }
@@ -44,6 +47,7 @@ namespace SkyStones
         public void sendPing()
         {
             var data = Encoding.UTF8.GetBytes("d");
+            udpClient.EnableBroadcast = true;
             udpClient.Send(data, data.Length, "255.255.255.255", 6969);
         }
     }
