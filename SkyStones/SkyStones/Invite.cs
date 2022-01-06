@@ -14,31 +14,41 @@ namespace SkyStones
     {
         Thread t;
         TcpClient connection;
+        NetworkStream stream;
         bool sender;
         public string othernick { get; set; }
         public Invite(TcpClient connection)
         {
             this.connection = connection;
+            stream = connection.GetStream();
             sender = false;
             t = new Thread(new ThreadStart(Listen));
         }
         public Invite(string ip)
         {
             this.connection = new TcpClient(ip, 6969);
+            stream = connection.GetStream();
             SendInvite();
             sender = true;
             t = new Thread(new ThreadStart(Listen));
         }
         public void Listen()
         {
-            NetworkStream stream = connection.GetStream();
             bool active = true;
             while (active)
             {
                 byte[] data = new byte[256];
-                string responseData = String.Empty;
-                int bytes = stream.Read(data, 0, data.Length);
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                string responseData = null;
+                int i;
+                while ((i = stream.Read(data, 0, data.Length)) != 0)
+                {
+                    // Translate data bytes to a ASCII string.
+                    responseData = System.Text.Encoding.ASCII.GetString(data, 0, i);
+                    Console.WriteLine("Received: {0}", responseData);
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(responseData);
+                }
+                //int bytes = stream.Read(data, 0, data.Length);
+                //responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 if (responseData.ElementAt(0) == '0')
                 {
                     if (sender)
@@ -83,19 +93,16 @@ namespace SkyStones
         }
         public void SendInvite()
         {
-            NetworkStream stream = connection.GetStream();
             byte[] data = System.Text.Encoding.ASCII.GetBytes("0" + SharedResources.Instance.nickname);
             stream.Write(data, 0, data.Length);
         }
         public void acceptInvite()
         {
-            NetworkStream stream = connection.GetStream();
             byte[] data = System.Text.Encoding.ASCII.GetBytes("0y" + SharedResources.Instance.nickname);
             stream.Write(data, 0, data.Length);
         }
         public void denyInvite()
         {
-            NetworkStream stream = connection.GetStream();
             byte[] data = System.Text.Encoding.ASCII.GetBytes("0n");
             stream.Write(data, 0, data.Length);
         }

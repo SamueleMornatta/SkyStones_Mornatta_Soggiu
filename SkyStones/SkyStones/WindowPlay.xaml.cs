@@ -77,7 +77,9 @@ namespace SkyStones
         }
         private void Invite_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            LocalPlayer ply = button.DataContext as LocalPlayer;
+            Invite inv = new Invite(ply.ip);
         }
 
         private void btnmaninv_Click(object sender, RoutedEventArgs e)
