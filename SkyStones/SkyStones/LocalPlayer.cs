@@ -8,8 +8,8 @@ namespace SkyStones
 {
     class LocalPlayer
     {
-        string nickname { set; get; }
-        string ip { set; get; }
+        public string nickname { set; get; }
+        public string ip { set; get; }
         public LocalPlayer(string nickname, string ip)
         {
             this.nickname = nickname;

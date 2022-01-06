@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,6 +17,7 @@ namespace SkyStones
         {
             udpClient = new UdpClient();
             udpClient.Client.Bind(new IPEndPoint(IPAddress.Any, 6969));
+            udpClient.EnableBroadcast = true;
         }
         public void Start()
         {
@@ -39,7 +41,11 @@ namespace SkyStones
                         string plynick = msg.Substring(1);
                         string ip = from.Address.ToString();
                         MessageBox.Show(plynick + ";" + ip);
-                        SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                        if (plynick != SharedResources.Instance.nickname)
+                        {
+                            SharedResources.Instance.playersFound.Add(new LocalPlayer(plynick, ip));
+                            Trace.WriteLine(SharedResources.Instance.nickname);
+                        }
                     }
                 }
             });
@@ -47,8 +53,7 @@ namespace SkyStones
         public void sendPing()
         {
             var data = Encoding.UTF8.GetBytes("d");
-            udpClient.EnableBroadcast = true;
-            udpClient.Send(data, data.Length, "255.255.255.255", 6969);
+            udpClient.Send(data, data.Length, new IPEndPoint(IPAddress.Broadcast,6969));
         }
     }
 }
