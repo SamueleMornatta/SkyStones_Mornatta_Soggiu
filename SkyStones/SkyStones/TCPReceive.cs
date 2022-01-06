@@ -15,10 +15,10 @@ namespace SkyStones
         private Thread T;
         private MainWindow M;
 
-        public TCPReceive(MainWindow M)
+        public TCPReceive(/*MainWindow M*/)
         {
             T = new Thread(Receiver);
-            this.M = M;
+            //this.M = M;
         }
 
         public void start()
@@ -49,12 +49,12 @@ namespace SkyStones
                 // Enter the listening loop.
                 while (true)
                 {
-                    M.Statorich.Content = ("Waiting for a connection... ");
+                    //M.Statorich.Content = ("Waiting for a connection... ");
 
                     // Perform a blocking call to accept requests.
                     // You could also use server.AcceptSocket() here.
                     TcpClient client = server.AcceptTcpClient();
-                    M.Statorich.Content = ("Connected!");
+                    //M.Statorich.Content = ("Connected!");
                     Invite inv = new Invite(client);
                     SharedResources.Instance.addInvite(inv);
                 }
