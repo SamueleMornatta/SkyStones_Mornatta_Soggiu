@@ -61,7 +61,7 @@ namespace SkyStones
             }
             catch (SocketException e)
             {
-                M.Statorich.Content=("SocketException: {0}", e);
+                
             }
         }
     }

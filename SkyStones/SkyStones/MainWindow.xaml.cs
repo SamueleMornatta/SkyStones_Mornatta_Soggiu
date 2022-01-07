@@ -60,5 +60,16 @@ namespace SkyStones
             wc.Show();
             this.Close();
         }
+
+        private void txtchangenic_Click(object sender, RoutedEventArgs e)
+        {
+            shared.nickname = txtnickname.Text;
+            MessageBox.Show("Nickname changed successfully");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtnickname.Text = shared.nickname;
+        }
     }
 }

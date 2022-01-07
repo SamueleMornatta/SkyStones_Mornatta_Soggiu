@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkyStones"
         mc:Ignorable="d"
-        Title="SkyStones" Height="675" Width="1000" WindowStartupLocation="CenterScreen" Icon="S.png" ResizeMode="CanResizeWithGrip">
+        Title="SkyStones" Height="675" Width="1000" WindowStartupLocation="CenterScreen" Icon="S.png" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -14,11 +14,14 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Image x:Name="imgTit" HorizontalAlignment="Center" Height="111" Margin="64,10,52,0" VerticalAlignment="Top" Width="876" Source="SkyStones_nobg.png" Stretch="Fill" />
-        <Button x:Name="btnGioca" Content="GIOCA" HorizontalAlignment="Center" Margin="451,280,401,335" VerticalAlignment="Center" Width="140" Height="29" FontFamily="ISOCP" FontSize="20" FontWeight="Bold" Click="btnGioca_Click"/>
-        <Button x:Name="btnCome" Content="COME GIOCARE" HorizontalAlignment="Center" Margin="451,314,401,302" VerticalAlignment="Center" Width="140" Height="28" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
-        <Button x:Name="btnEsci" Content="ESCI" HorizontalAlignment="Center" Margin="451,381,401,234" VerticalAlignment="Center" Width="140" Click="btnEsci_Click" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
-        <Button x:Name="btnColl" Content="COLLEZIONE" HorizontalAlignment="Center" Margin="451,347,401,268" VerticalAlignment="Center" Width="140" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20" Click="btnColl_Click"/>
+        <Button x:Name="btnGioca" Content="PLAY" HorizontalAlignment="Center" Margin="451,280,401,335" VerticalAlignment="Center" Width="140" Height="29" FontFamily="ISOCP" FontSize="20" FontWeight="Bold" Click="btnGioca_Click"/>
+        <Button x:Name="btnCome" Content="HOW TO PLAY" HorizontalAlignment="Center" Margin="451,314,401,302" VerticalAlignment="Center" Width="140" Height="28" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
+        <Button x:Name="btnEsci" Content="QUIT" HorizontalAlignment="Center" Margin="451,381,401,234" VerticalAlignment="Center" Width="140" Click="btnEsci_Click" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20"/>
+        <Button x:Name="btnColl" Content="COLLECTION" HorizontalAlignment="Center" Margin="451,347,401,268" VerticalAlignment="Center" Width="140" Height="29" FontFamily="ISOCP" FontWeight="Bold" FontSize="20" Click="btnColl_Click"/>
         <Label x:Name="Statorich" Content="Label" HorizontalAlignment="Left" Margin="10,614,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="txtchangenic" Content="Change" HorizontalAlignment="Left" Margin="64,187,0,0" VerticalAlignment="Top" Width="180" Click="txtchangenic_Click"/>
+        <TextBox x:Name="txtnickname" HorizontalAlignment="Left" Height="23" Margin="159,159,0,0" TextWrapping="Wrap" Text="guest" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Nickname:" HorizontalAlignment="Left" Margin="64,151,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFC3C0C0" FontSize="16"/>
 
 
     </Grid>
