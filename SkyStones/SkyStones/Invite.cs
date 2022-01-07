@@ -62,9 +62,9 @@ namespace SkyStones
                                 Application.Current.Dispatcher.Invoke(new Action(() => {
                                     play.caninvite = true;
                                     play.checkifcaninvite();
+                                    Application.Current.Windows[0].Close();
                                     gameplay g = new gameplay();
                                     g.Show();
-                                    Application.Current.Windows.OfType<WindowPlay>().ElementAt(0).Close();
                                     MessageBox.Show("Invite accepted by " + othernick);
                                 }));
                             }
@@ -86,9 +86,9 @@ namespace SkyStones
                                 active = false;
                                 SharedResources.Instance.gameSocket = connection;
                                 Application.Current.Dispatcher.Invoke(new Action(() => { 
+                                    Application.Current.Windows[0].Close();
                                     gameplay g = new gameplay();
                                     g.Show();
-                                    Application.Current.Windows.OfType<WindowPlay>().ElementAt(0).Close();
                                 }));
                             }
                             else if (responseData.ElementAt(1) == 'n')
