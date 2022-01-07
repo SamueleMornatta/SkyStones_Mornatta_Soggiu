@@ -18,6 +18,7 @@ namespace SkyStones
         public List<Upgrade> upgrades;
         public List<Invite> invites;
         public List<LocalPlayer> playersFound;
+        public TCPReceive trec { set; get; }
         public TcpClient gameSocket { set; get;}
         public string nickname;
         private static readonly Object _sync = new Object();
