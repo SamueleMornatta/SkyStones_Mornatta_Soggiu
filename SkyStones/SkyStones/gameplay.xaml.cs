@@ -62,7 +62,7 @@ namespace SkyStones
 
         private void btnsend_Click(object sender, RoutedEventArgs e)
         {
-
+            send();
         }
     }
 }
