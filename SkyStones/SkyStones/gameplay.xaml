@@ -7,35 +7,8 @@
         mc:Ignorable="d"
         Title="gameplay" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="tav" Background="#FF5C3D2E">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="200" Height="300">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="83*"/>
-                            <RowDefinition Height="217*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Fill="Gray" Margin="9,7,11,7" Stroke="Black" Grid.RowSpan="2"/>
-                        <Rectangle Fill="LightGray" Margin="19,19,20,21" Stroke="Black" Grid.RowSpan="2"/>
-                        <Image Source="{Binding I}" Margin="30,28,30,136" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
-                        <TextBlock Text="{Binding name}" Margin="88,99,30,95" Grid.Row="1" />
-                        <TextBlock Text="{Binding tipo}" Margin="88,127,29,67" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
-                        <TextBlock Text="Name: " Margin="31,99,117,95" Grid.Row="1" />
-                        <TextBlock Text="Type: " Margin="31,127,117,67" Grid.Row="1" />
-                        <TextBlock Text="Att:" Margin="31,155,148,39" Grid.Row="1" />
-                        <TextBlock Text="{Binding att[0]}" Margin="66,155,117,39" Grid.Row="1" />
-                        <TextBlock Text="{Binding att[1]}" Margin="88,155,95,39" Grid.Row="1" />
-                        <TextBlock Text="{Binding att[2]}" Margin="110,155,73,39" Grid.Row="1" />
-                        <TextBlock Text="{Binding att[3]}" Margin="132,155,51,39" Grid.Row="1" />
-                        <TextBlock Text="[Up,Right,Down,Left]" Margin="52,173,30,21" Grid.Row="1" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+        
     </Grid>
-</Window>
+    
+    </Window>
+    
