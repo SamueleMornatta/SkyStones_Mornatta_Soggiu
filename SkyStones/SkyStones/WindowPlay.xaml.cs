@@ -24,9 +24,11 @@ namespace SkyStones
     public partial class WindowPlay : Window
     {
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
+        public bool caninvite;
         public WindowPlay()
         {
             InitializeComponent();
+            caninvite = true;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -79,12 +81,30 @@ namespace SkyStones
         {
             Button button = sender as Button;
             LocalPlayer ply = button.DataContext as LocalPlayer;
-            Invite inv = new Invite(ply.ip);
+            Invite inv = new Invite(ply.ip, this);
+            caninvite = false;
+            checkifcaninvite();
         }
 
         private void btnmaninv_Click(object sender, RoutedEventArgs e)
         {
-            Invite inv = new Invite(ipman.Text);
+            Invite inv = new Invite(ipman.Text, this);
+            caninvite = false;
+            checkifcaninvite();
+        }
+
+        public void checkifcaninvite()
+        {
+            if (caninvite)
+            {
+                viewPlayers.IsEnabled = true;
+                btnmaninv.IsEnabled = true;
+            }
+            else
+            {
+                viewPlayers.IsEnabled = false;
+                btnmaninv.IsEnabled = false;
+            }
         }
     }
 }
