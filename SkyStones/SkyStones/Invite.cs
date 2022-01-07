@@ -48,7 +48,6 @@ namespace SkyStones
                     int i;
                     i = stream.Read(data, 0, data.Length);
                     responseData = System.Text.Encoding.ASCII.GetString(data, 0, i);
-                    Console.WriteLine(responseData);
                     if (responseData.ElementAt(0) == '0')
                     {
                         if (sender)
@@ -76,7 +75,7 @@ namespace SkyStones
                                 {
                                     play.caninvite = true;
                                     play.checkifcaninvite();
-                                    MessageBox.Show("Invite Denied!");
+                                    MessageBox.Show("Invite Declined!");
                                 }));
                             }
                         }
@@ -86,9 +85,11 @@ namespace SkyStones
                             {
                                 active = false;
                                 SharedResources.Instance.gameSocket = connection;
-                                Application.Current.Dispatcher.Invoke(new Action(() => { Application.Current.Windows[0].Close(); }));
-                                gameplay g = new gameplay();
-                                g.Show();
+                                Application.Current.Dispatcher.Invoke(new Action(() => { 
+                                    Application.Current.Windows[0].Close();
+                                    gameplay g = new gameplay();
+                                    g.Show();
+                                }));
                             }
                             else if (responseData.ElementAt(1) == 'n')
                             {
@@ -97,7 +98,6 @@ namespace SkyStones
                             else
                             {
                                 othernick = responseData.Substring(1);
-                                Console.WriteLine(othernick);
                             }
                         }
                     }
