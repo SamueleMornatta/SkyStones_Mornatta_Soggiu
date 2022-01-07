@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,19 +22,16 @@ namespace SkyStones
     {
         private Deck deck;
         private SharedResources shared;
+        private TcpClient conn;
         public gameplay()
         {
             InitializeComponent();
             deck = Deck.Instance;
             shared = SharedResources.Instance;
-            Card mornatta = new Card(1000, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
-            Card soggiu = new Card(1001, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
-            Card roncoroni = new Card(1002, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
-            Card marelli = new Card(1003, new int[] { 4, 4, 4, 4 }, new BitmapImage(), "avatar");
-            //tav.Items.Add(mornatta);
-            //tav.Items.Add(soggiu);
-            //tav.Items.Add(roncoroni);
-            //tav.Items.Add(marelli);            
+            conn = shared.gameSocket;
+
         }
+
+
     }
 }
