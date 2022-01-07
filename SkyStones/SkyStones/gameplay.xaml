@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="gameplay" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="sender" HorizontalAlignment="Left" Height="23" Margin="10,386,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnsend" Content="Invia" HorizontalAlignment="Left" Margin="135,389,0,0" VerticalAlignment="Top" Width="75" Click="btnsend_Click"/>
+
     </Grid>
     
     </Window>

@@ -36,6 +36,7 @@ namespace SkyStones
             shared = SharedResources.Instance;
             deck = Deck.Instance;
             TCPReceive tr= new TCPReceive(/*this*/);
+            shared.trec = tr;
             tr.start();
         }
 
