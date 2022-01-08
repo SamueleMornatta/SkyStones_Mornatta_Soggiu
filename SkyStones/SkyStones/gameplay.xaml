@@ -5,12 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkyStones"
         mc:Ignorable="d"
-        Title="gameplay" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="sender" HorizontalAlignment="Left" Height="23" Margin="10,386,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnsend" Content="Invia" HorizontalAlignment="Left" Margin="135,389,0,0" VerticalAlignment="Top" Width="75" Click="btnsend_Click"/>
+        Title="gameplay" Height="746.025" Width="800" ResizeMode="NoResize">
+    <Canvas x:Name="grid">
+        <TextBox x:Name="sender" HorizontalAlignment="Left" Height="23" Margin="10,682,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnsend" Content="Invia" HorizontalAlignment="Left" Margin="135,685,0,0" VerticalAlignment="Top" Width="75" Click="btnsend_Click"/>
+        <Canvas Height="70" Canvas.Left="10" Canvas.Top="10" Width="772" Background="#FFC17979"/>
+        <Canvas x:Name="mazzo" Height="100" Canvas.Left="10" Canvas.Top="577" Width="772" Background="#FFC17979">
+            <Label x:Name="coordinate" Content="Label" Canvas.Top="74" />
+        </Canvas>
+        <Canvas Height="497" Canvas.Left="10" Canvas.Top="80" Width="100" Background="#FF817474"/>
+        <Canvas Height="497" Canvas.Left="682" Canvas.Top="80" Width="100" Background="#FF817474"/>
+        <Canvas x:Name="tavola" Height="498" Canvas.Left="110" Canvas.Top="80" Width="572" Background="#FFAC9090">
+            <GridSplitter Height="498" Canvas.Left="228" Width="3"/>
+            <GridSplitter Height="498" Canvas.Left="457" Width="3"/>
+            <GridSplitter Height="498" Canvas.Left="114" Width="3"/>
+            <GridSplitter Height="498" Canvas.Left="343" Width="3"/>
+            <GridSplitter Height="498" Canvas.Left="114" Width="3"/>
+            <GridSplitter  Grid.Row="1" Height="3" Width="572" Grid.ColumnSpan ="3" Canvas.Top="99" HorizontalAlignment="Stretch"/>
+            <GridSplitter  Grid.Row="2" Height="3" Width="572" Grid.ColumnSpan ="3" Canvas.Top="199" HorizontalAlignment="Stretch"/>
+            <GridSplitter  Grid.Row="3" Height="3" Width="572" Grid.ColumnSpan ="3" Canvas.Top="299" HorizontalAlignment="Stretch"/>
+            <GridSplitter  Grid.Row="4" Height="3" Width="572" Grid.ColumnSpan ="3" Canvas.Top="398" HorizontalAlignment="Stretch"/>
+            <!--<Grid Height="99" Width="114"/>-->
+        </Canvas>
 
-    </Grid>
-    
-    </Window>
+    </Canvas>
+
+</Window>
     
