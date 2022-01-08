@@ -37,6 +37,7 @@ namespace SkyStones
             conn = shared.gameSocket;
             NetworkStream stream = conn.GetStream();
             writer = new StreamWriter(stream);
+            writer.AutoFlush = true;
             reader = new StreamReader(stream);
             t = new Thread(new ThreadStart(listener));
             t.Start();
@@ -44,18 +45,20 @@ namespace SkyStones
         }
 
         public void send()
-        {
+        {            
             writer.WriteLine(sender.Text);
+            //writer.Flush();            
         }
 
 
         public void listener()
-        {            
+        {
+            string line;
             while (true)
             {
-                while (reader.Peek()>=0)
+                while (( line = reader.ReadLine())!=null)
                 {
-                    Application.Current.Dispatcher.Invoke(new Action(() => { MessageBox.Show(reader.ReadLine()); })); 
+                    Application.Current.Dispatcher.Invoke(new Action(() => { MessageBox.Show(line); }));                    
                 }
             }
         }
