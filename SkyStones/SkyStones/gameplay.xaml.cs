@@ -36,44 +36,44 @@ namespace SkyStones
             InitializeComponent();
             deck = Deck.Instance;
             shared = SharedResources.Instance;
-            //conn = shared.gameSocket;
-            //NetworkStream stream = conn.GetStream();
-            //writer = new StreamWriter(stream);
-            //writer.AutoFlush = true;
-            //reader = new StreamReader(stream);
+            conn = shared.gameSocket;
+            NetworkStream stream = conn.GetStream();
+            writer = new StreamWriter(stream);
+            writer.AutoFlush = true;
+            reader = new StreamReader(stream);
             t = new Thread(new ThreadStart(listener));
-            //t.Start();
+            
 
 
             //Application.Current.Dispatcher.Invoke(new Action(() => { MessageBox.Show(Directory.GetCurrentDirectory()+@"\..\.."); }));
 
 
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    for (int j = 0; j < 5; j++)
+            //    {
                     Card C = new Card();
                     C.setgameplay(this);
-                    matr[i, j] = C.Can;                    
+                    matr[0, 0] = C.Can;                    
                     
-                }
+            //    }
                 
-            }
+            //}
             double x = 25;
             double y = 4;
 
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    tavola.Children.Add(matr[i, j]);
-                    Canvas.SetLeft(matr[i, j], x);
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    for (int j = 0; j < 5; j++)
+            //    {
+                    tavola.Children.Add(matr[0, 0]);
+                    Canvas.SetLeft(matr[0, 0], x);
                     x += 114.4;
-                    Canvas.SetTop(matr[i, j], y);
-                }
-                y += 100.4;
-                x = 25;
-            }
+                    Canvas.SetTop(matr[0, 0], y);
+            //    }
+            //    y += 100.4;
+            //    x = 25;
+            //}
 
             //matr[0, 0] = new Rectangle();
             //matr[0, 0].Height = 100;
@@ -91,6 +91,7 @@ namespace SkyStones
             //tavola.Children.Add(matr[0, 0]);
 
             //shared.trec.stop();
+            t.Start();
         }
 
         public void send()

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -19,10 +21,12 @@ namespace SkyStones
         public String tipo { get; set; }
         public String nome { get; set; }
         public Canvas Can { get; set; }
-        private bool _isRectDragInProg;
+        private bool _isRectDragInProg, canMove;
         private gameplay G;
         private Label l { get; set; }
         private Image Imm;
+
+        private Point P;
 
 
         public Card()
@@ -31,7 +35,8 @@ namespace SkyStones
             att = new int[4];
             for (int i = 0; i < att.Length; i++)
             {
-                att[i] = 0;
+                att[i] = new Random().Next(0,5);
+                Thread.Sleep(10);
             }
             I = new BitmapImage();
             tipo = "";
@@ -55,6 +60,7 @@ namespace SkyStones
 
         public void createCanvas()
         {
+            P = new Point(0,0);
             l = new Label();
             Imm = new Image();
             SolidColorBrush br = new SolidColorBrush();
@@ -135,6 +141,71 @@ namespace SkyStones
         private void rect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             _isRectDragInProg = false;
+            
+            var mousePos = e.GetPosition(G.tavola);
+
+            // center the rect on the mouse
+            double left = mousePos.X - (Can.ActualWidth / 2);
+            double top = mousePos.Y - (Can.ActualHeight / 2);
+
+            if (left >= 0 && left <= 85)
+            {
+                P.X = 0;
+                left = 25;
+            }
+            else if (left >= 86 && left <= 195)
+            {
+                P.X = 1;
+                left = 25 + 114.4;
+            }
+            else if (left >= 196 &&left <= 310)
+            {
+                P.X = 2;
+                left = 25 + 114.4 * 2;
+            }
+            else if (left >= 311 &&left <= 424)
+            {
+                P.X =3;
+                left = 25 + 114.4 * 3;
+            }
+            else if (left >= 425&& left <= 566)
+            {
+                P.X = 4;
+                left = 25 + 114.4 * 4;
+            }
+
+
+            if (top >= 0 && top <= 50)
+            {
+                P.Y = 0;
+                top = 4;
+            }
+            else if (top >= 51 && top <= 150)
+            {
+                P.Y = 1;
+                top = 4 + 100.4;
+            }
+            else if (top >= 151 && top <= 250)
+            {
+                P.Y = 2;
+                top = 4 + 100.4 * 2;
+            }
+            else if (top >= 251 && top <= 350)
+            {
+                P.Y = 3;
+                top = 4 + 100.4 * 3;
+            }
+            else if (top >= 351 && top <= 450)
+            {
+                P.Y = 4;
+                top = 4 + 100.4 * 4;
+            }
+
+
+            G.coordinate.Content = "x: " + left + " y: " + top+ " PUNTO: " + P.X+", "+P.Y;
+            Canvas.SetLeft(Can, left);
+            Canvas.SetTop(Can, top);
+
             Can.ReleaseMouseCapture();
         }
 
@@ -148,8 +219,6 @@ namespace SkyStones
             // center the rect on the mouse
             double left = mousePos.X - (Can.ActualWidth / 2);
             double top = mousePos.Y - (Can.ActualHeight / 2);
-            double bottom = mousePos.Y - (Can.ActualHeight / 2);
-            double right = mousePos.Y - (Can.ActualHeight / 2);
             if (left >= 502)
             {
                 left = 502;
@@ -166,7 +235,9 @@ namespace SkyStones
             {
                 left = 0;
             }
-            G.coordinate.Content = "x: " + top + " y: " + left;
+
+
+            G.coordinate.Content = "x: " + left + " y: " + top;
             Canvas.SetLeft(Can, left);
             Canvas.SetTop(Can, top);
         }
