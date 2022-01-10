@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="WindowPlay" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF2D2424" Offset="0"/>
+                <GradientStop Color="#FF5C3D2E" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -22,8 +28,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <GridSplitter HorizontalAlignment="Left" Height="419" Margin="560,0,0,0" VerticalAlignment="Top" Width="5"/>
-        <Label Content="Invite a player" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Bauhaus 93" Height="61" Width="255"/>
+        <GridSplitter HorizontalAlignment="Left" Height="419" Margin="560,0,0,0" VerticalAlignment="Top" Width="5" Background="White"/>
+        <Label Content="Invite a player" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" FontFamily="Bauhaus 93" Height="61" Width="255" Foreground="#FFB9B9B9"/>
         <ListView Margin="570,38,10,10" Name="viewInvites">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -37,8 +43,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Content="Pending Invites" HorizontalAlignment="Left" Margin="570,-7,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" FontFamily="Bauhaus 93" Height="45" Width="191"/>
-        <Button x:Name="btnmaninv" Content="Manual Invite" HorizontalAlignment="Left" Margin="381,38,0,0" VerticalAlignment="Top" Width="75" Click="btnmaninv_Click"/>
-        <TextBox x:Name="ipman" HorizontalAlignment="Left" Height="23" Margin="359,11,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Pending Invites" HorizontalAlignment="Left" Margin="570,-7,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" FontFamily="Bauhaus 93" Height="45" Width="191" Foreground="#FFB9B9B9"/>
+        <Button x:Name="btnmaninv" Content="Manual Invite" HorizontalAlignment="Left" Margin="425,51,0,0" VerticalAlignment="Top" Width="120" Click="btnmaninv_Click"/>
+        <TextBox x:Name="ipman" HorizontalAlignment="Left" Height="23" Margin="425,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
