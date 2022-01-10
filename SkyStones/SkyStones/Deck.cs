@@ -105,7 +105,7 @@ namespace SkyStones
         public Card drawRandomCard()
         {
             Random rand = new Random();
-            int index = rand.Next(1, maxCards);
+            int index = rand.Next(1, 5);
             Card tmp = deck.ElementAt(index - 1);
             return tmp;
         }
