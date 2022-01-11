@@ -56,13 +56,9 @@ namespace SkyStones
                 List<Card> cards = new List<Card>();
                 for (int i = 0; i < items.Count; i++)
                 {
-                    Card tmp = new Card();
-                    tmp.setID(items.ElementAt(i).ID);
-                    tmp.setAtt(items.ElementAt(i).att);
-                    tmp.setTipo(items.ElementAt(i).tipo);
-                    tmp.nome = items.ElementAt(i).nome;
                     BitmapImage img = new BitmapImage(new Uri(items.ElementAt(i).Ipath, UriKind.Relative));
-                    tmp.setI(img);
+                    Card tmp = new Card(items.ElementAt(i).ID, items.ElementAt(i).att, img,items.ElementAt(i).tipo);
+                    tmp.nome = items.ElementAt(i).nome;
                     cards.Add(tmp);
                 }
                 return cards;

@@ -38,8 +38,7 @@ namespace SkyStones
             att = new int[4];
             for (int i = 0; i < att.Length; i++)
             {
-                att[i] = new Random().Next(0, 5);
-                Thread.Sleep(10);
+                att[i] = 0;
             }
             I = new BitmapImage();
             tipo = "";
@@ -48,7 +47,7 @@ namespace SkyStones
             SolidColorBrush br = new SolidColorBrush();
             br.Color = Colors.Transparent;
             Can.Background = br;
-            createCanvas();
+            //createCanvas();
         }
 
         public Card(int iD, int[] att, BitmapImage i, string tipo)
@@ -80,14 +79,12 @@ namespace SkyStones
             Can.Width = 70;
 
 
-            if (placed)
-            {
-
-            }
             Can.MouseLeftButtonDown += (sender, e) => rect_MouseLeftButtonDown(sender, e);
             Can.MouseLeftButtonUp += (sender, e) => rect_MouseLeftButtonUp(sender, e);
             Can.MouseMove += (sender, e) => rect_MouseMove(sender, e);
 
+
+            l.Content = ID;
             Can.Children.Add(l);
 
             Imm.Height = 20;
@@ -140,19 +137,7 @@ namespace SkyStones
                 Canvas.SetRight(immagineE, -5);
                 Can.Children.Add(immagineE);
             }
-            Imm = new Image();
-
-            if (G != null)
-            {
-                if (G.ric)
-                {
-                    //G.send("p;00" + att[0] + att[1] + att[2] + att[3]);
-                }
-                else
-                {
-                    //G.send("p;44" + att[0] + att[1] + att[2] + att[3]);
-                }
-            }
+            Imm = new Image();            
 
 
         }
@@ -260,7 +245,13 @@ namespace SkyStones
 
             if (P.Y != 5)
             {
-                G.send("1" + P.X + P.Y + att[0] + att[1] + att[2] + att[3]+G.checkWin());
+                string idS = ID.ToString();
+                if (ID < 10)
+                {
+                    idS = "0" + ID.ToString();
+                }
+                string tmp = "1" + P.X + P.Y + idS + G.checkWin();
+                G.send(tmp);
                 G.addCard(this, P);
                 canMove = false;
             }

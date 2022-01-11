@@ -38,6 +38,8 @@ namespace SkyStones
             InitializeComponent();
             deck = Deck.Instance;
             shared = SharedResources.Instance;
+
+            deck.resetUsedCards();
             conn = shared.gameSocket;
             NetworkStream stream = conn.GetStream();
             writer = new StreamWriter(stream);
@@ -47,17 +49,6 @@ namespace SkyStones
             ric = false;
             t.SetApartmentState(ApartmentState.STA);
 
-
-            for (int i = 0; i < 30; i++)
-            {
-                int[] atttm = new int[4];
-                for (int j = 0; j < 4; j++)
-                {
-                    atttm[j]= new Random().Next(4);
-                    Thread.Sleep(10);
-                }
-                deck.addCard(new Card(i, atttm, new BitmapImage(), ""));
-            }            
 
 
             for (int i = 0; i < 5; i++)
@@ -71,55 +62,6 @@ namespace SkyStones
                     matr[i, j].Can.Background = Brushes.Transparent;
                 }
             }
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    for (int j = 0; j < 5; j++)
-            //    {
-            //Card C = new Card();
-            //C.setgameplay(this);
-            //if (ric)
-            //{
-            //    C.vuota = false;
-            //    //matr[0, 0] = C;
-            //}
-            //else
-            //{
-            //    C.vuota = false;
-            //    //matr[4, 4] = C;
-            //}
-            //C.setPosseduta(true);
-            //    }
-
-            //}
-            //double x = 25;
-            //double y = 4;
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    for (int j = 0; j < 5; j++)
-            //    {
-            //if (ric)
-            //{
-            //    tavola.Children.Add(matr[0, 0].Can);
-            //    Canvas.SetLeft(matr[0, 0].Can, x);
-            //    x += 114.4;
-            //    Canvas.SetTop(matr[0, 0].Can, y);
-            //}
-            //else
-            //{
-            //    matr[4, 4].vuota = false;
-            //    matr[4, 4].setPosseduta(true);
-            //    tavola.Children.Add(matr[4, 4].Can);
-            //    x += 114.4 * 4 + 25;
-            //    Canvas.SetLeft(matr[4, 4].Can, x);
-            //    y = 100.4 * 4 + 4;
-            //    Canvas.SetTop(matr[4, 4].Can, y);
-            //}
-            //    }
-            //    y += 100.4;
-            //    x = 25;
-            //}            
             //shared.trec.stop();
 
             t.Start();
@@ -131,7 +73,7 @@ namespace SkyStones
             disegnaTavolo();
         }
 
-        public void send() 
+        public void send()
         {
             writer.WriteLine(sender.Text);
             //writer.Flush();            
@@ -152,7 +94,7 @@ namespace SkyStones
                 while ((line = reader.ReadLine()) != null)
                 {
                     Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {                                                                                               
+                    {
                         if (line.ElementAt(0) == '1')
                         {
                             int id = (Convert.ToInt32(line.ElementAt(3)) - 48) * 10 + Convert.ToInt32(line.ElementAt(4)) - 48;
@@ -172,7 +114,7 @@ namespace SkyStones
         {
             for (int i = 0; i < deck.getAmmountCards(); i++)
             {
-                if (deck.getCardAt(i).ID==ID)
+                if (deck.getCardAt(i).ID == ID)
                 {
                     return deck.getCardAt(i);
                 }
@@ -194,9 +136,9 @@ namespace SkyStones
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    if (!matr[i,j].vuota)
+                    if (!matr[i, j].vuota)
                     {
-                        if (matr[i,j].isPosseduta())
+                        if (matr[i, j].isPosseduta())
                         {
                             chm++;
                         }
@@ -205,7 +147,7 @@ namespace SkyStones
                             cho++;
                         }
                     }
-                }                                
+                }
             }
             if (chm + cho != 25)
             {
