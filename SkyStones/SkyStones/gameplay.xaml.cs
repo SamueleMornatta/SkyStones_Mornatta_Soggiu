@@ -97,13 +97,33 @@ namespace SkyStones
                     {
                         if (line.ElementAt(0) == '1')
                         {
-                            int id = (Convert.ToInt32(line.ElementAt(3)) - 48) * 10 + Convert.ToInt32(line.ElementAt(4)) - 48;
-                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48] = getCardbyID(id);
-                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setPosseduta(false);
-                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setgameplay(this);
-                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].vuota = false;
-                            //tavola.Children.Add(matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].Can);
-                            disegnaTavolo();
+                            if (Convert.ToInt32(line.ElementAt(5)) - 48 == 0)
+                            {
+                                int id = (Convert.ToInt32(line.ElementAt(3)) - 48) * 10 + Convert.ToInt32(line.ElementAt(4)) - 48;
+                                matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48] = getCardbyID(id);
+                                matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setPosseduta(false);
+                                matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setgameplay(this);
+                                matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].vuota = false;
+                                //tavola.Children.Add(matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].Can);
+                                disegnaTavolo();
+                            }
+                            else if (Convert.ToInt32(line.ElementAt(5)) - 48 == 1)
+                            {
+                                MessageBox.Show("L'avversario si è arreso.");
+                                deck.resetUsedCards();
+                                t.Abort();
+                                new MainWindow().Show();
+                                this.Close();
+                            }
+                            else if (Convert.ToInt32(line.ElementAt(5)) - 48 == 2)
+                            {
+                                MessageBox.Show("Hai vinto!");
+                                deck.resetUsedCards();
+                            }
+                            else if (Convert.ToInt32(line.ElementAt(5)) - 48 == 3)
+                            {
+                                MessageBox.Show("Hai perso");
+                            }
                         }
                     }));
                 }
@@ -364,7 +384,10 @@ namespace SkyStones
 
         private void resa_Click(object sender, RoutedEventArgs e)
         {
-
+            send("100001");
+            new MainWindow().Show();
+            t.Abort();
+            this.Close();
         }
 
         private void mazzobutt_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
