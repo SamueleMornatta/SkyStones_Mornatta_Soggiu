@@ -48,10 +48,10 @@ namespace SkyStones
         private void btnGioca_Click(object sender, RoutedEventArgs e)
         {
             WindowPlay W = new WindowPlay();
-            gameplay G = new gameplay();
-            G.Show();
+            //gameplay G = new gameplay();
+            //G.Show();
             //this.Close();
-            //W.Show();
+            W.Show();
             this.Close();
         }
 
