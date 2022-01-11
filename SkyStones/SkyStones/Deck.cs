@@ -12,12 +12,14 @@ namespace SkyStones
     {
         const int maxCards = 30;
         private List<Card> deck;
+        private List<Card> todraw;
         private SharedResources shared;
         private static Deck _instance;
         private static readonly Object _sync = new Object();
         private Deck() {
             shared = SharedResources.Instance;
             deck = ReadDeck();
+            resetUsedCards();
         }
         public static Deck Instance
         {
@@ -105,9 +107,14 @@ namespace SkyStones
         public Card drawRandomCard()
         {
             Random rand = new Random();
-            int index = rand.Next(1, maxCards);
-            Card tmp = deck.ElementAt(index - 1);
+            int index = rand.Next(1, todraw.Count);
+            Card tmp = todraw.ElementAt(index - 1);
+            todraw.RemoveAt(index - 1);
             return tmp;
+        }
+        public void resetUsedCards()
+        {
+            todraw = deck;
         }
         public Card getCardAt(int index)
         {
