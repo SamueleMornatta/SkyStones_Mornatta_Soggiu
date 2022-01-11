@@ -48,14 +48,16 @@ namespace SkyStones
             t.SetApartmentState(ApartmentState.STA);
 
 
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-            deck.addCard(new Card(0, new int[4] { 3, 2, 1, 2 }, new BitmapImage(), ""));
-
+            for (int i = 0; i < 30; i++)
+            {
+                int[] atttm = new int[4];
+                for (int j = 0; j < 4; j++)
+                {
+                    atttm[j]= new Random().Next(4);
+                    Thread.Sleep(10);
+                }
+                deck.addCard(new Card(i, atttm, new BitmapImage(), ""));
+            }            
 
 
             for (int i = 0; i < 5; i++)
@@ -74,51 +76,52 @@ namespace SkyStones
             //{
             //    for (int j = 0; j < 5; j++)
             //    {
-            Card C = new Card();
-            C.setgameplay(this);
-            if (ric)
-            {
-                C.vuota = false;
-                //matr[0, 0] = C;
-            }
-            else
-            {
-                C.vuota = false;
-                //matr[4, 4] = C;
-            }
-            C.setPosseduta(true);
+            //Card C = new Card();
+            //C.setgameplay(this);
+            //if (ric)
+            //{
+            //    C.vuota = false;
+            //    //matr[0, 0] = C;
+            //}
+            //else
+            //{
+            //    C.vuota = false;
+            //    //matr[4, 4] = C;
+            //}
+            //C.setPosseduta(true);
             //    }
 
             //}
-            double x = 25;
-            double y = 4;
+            //double x = 25;
+            //double y = 4;
 
             //for (int i = 0; i < 5; i++)
             //{
             //    for (int j = 0; j < 5; j++)
             //    {
-            if (ric)
-            {
-                tavola.Children.Add(matr[0, 0].Can);
-                Canvas.SetLeft(matr[0, 0].Can, x);
-                x += 114.4;
-                Canvas.SetTop(matr[0, 0].Can, y);
-            }
-            else
-            {
-                matr[4, 4].vuota = false;
-                matr[4, 4].setPosseduta(true);
-                tavola.Children.Add(matr[4, 4].Can);
-                x += 114.4 * 4 + 25;
-                Canvas.SetLeft(matr[4, 4].Can, x);
-                y = 100.4 * 4 + 4;
-                Canvas.SetTop(matr[4, 4].Can, y);
-            }
+            //if (ric)
+            //{
+            //    tavola.Children.Add(matr[0, 0].Can);
+            //    Canvas.SetLeft(matr[0, 0].Can, x);
+            //    x += 114.4;
+            //    Canvas.SetTop(matr[0, 0].Can, y);
+            //}
+            //else
+            //{
+            //    matr[4, 4].vuota = false;
+            //    matr[4, 4].setPosseduta(true);
+            //    tavola.Children.Add(matr[4, 4].Can);
+            //    x += 114.4 * 4 + 25;
+            //    Canvas.SetLeft(matr[4, 4].Can, x);
+            //    y = 100.4 * 4 + 4;
+            //    Canvas.SetTop(matr[4, 4].Can, y);
+            //}
             //    }
             //    y += 100.4;
             //    x = 25;
             //}            
             //shared.trec.stop();
+
             t.Start();
         }
 
@@ -128,7 +131,7 @@ namespace SkyStones
             disegnaTavolo();
         }
 
-        public void send()
+        public void send() 
         {
             writer.WriteLine(sender.Text);
             //writer.Flush();            
@@ -149,27 +152,74 @@ namespace SkyStones
                 while ((line = reader.ReadLine()) != null)
                 {
                     Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {
-                        //MessageBox.Show(line);
-                        if (line.ElementAt(0) == 'p')
+                    {                                                                                               
+                        if (line.ElementAt(0) == '1')
                         {
-
-                            matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48] = new Card(0, new int[4] { Convert.ToInt32(line.ElementAt(4)) - 48, Convert.ToInt32(line.ElementAt(5)) - 48, Convert.ToInt32(line.ElementAt(6)) - 48, Convert.ToInt32(line.ElementAt(7)) - 48 }, new BitmapImage(), "tipo");
-                            matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].setPosseduta(false);
-                            matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].setgameplay(this);
-                            matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].vuota = false;
+                            int id = (Convert.ToInt32(line.ElementAt(3)) - 48) * 10 + Convert.ToInt32(line.ElementAt(4)) - 48;
+                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48] = getCardbyID(id);
+                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setPosseduta(false);
+                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].setgameplay(this);
+                            matr[Convert.ToInt32(line.ElementAt(2)) - 48, Convert.ToInt32(line.ElementAt(1)) - 48].vuota = false;
                             //tavola.Children.Add(matr[Convert.ToInt32(line.ElementAt(3)) - 48, Convert.ToInt32(line.ElementAt(2)) - 48].Can);
                             disegnaTavolo();
-
                         }
                     }));
                 }
             }
         }
 
+        private Card getCardbyID(int ID)
+        {
+            for (int i = 0; i < deck.getAmmountCards(); i++)
+            {
+                if (deck.getCardAt(i).ID==ID)
+                {
+                    return deck.getCardAt(i);
+                }
+            }
+            return new Card();
+        }
+
         private void btnsend_Click(object sender, RoutedEventArgs e)
         {
             send();
+        }
+
+
+        public int checkWin()
+        {
+            int chm = 0, cho = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (!matr[i,j].vuota)
+                    {
+                        if (matr[i,j].isPosseduta())
+                        {
+                            chm++;
+                        }
+                        else if (!matr[i, j].isPosseduta())
+                        {
+                            cho++;
+                        }
+                    }
+                }                                
+            }
+            if (chm + cho != 25)
+            {
+                return 0; //Partita ancora in corso
+            }
+            else if (chm > cho)
+            {
+                return 1; //Ho vinto io
+            }
+            else if (cho > chm)
+            {
+                return 2; //Ha vinto l'avversario
+            }
+            return -1;
         }
 
 
@@ -360,16 +410,10 @@ namespace SkyStones
                         }
                         catch (Exception)
                         {
-
-
                         }
-
                     }
-
                 }
             }
-
-
 
             //tavola = new Canvas();
             //    }

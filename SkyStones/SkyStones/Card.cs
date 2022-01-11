@@ -146,11 +146,11 @@ namespace SkyStones
             {
                 if (G.ric)
                 {
-                    G.send("p;00" + att[0] + att[1] + att[2] + att[3]);
+                    //G.send("p;00" + att[0] + att[1] + att[2] + att[3]);
                 }
                 else
                 {
-                    G.send("p;44" + att[0] + att[1] + att[2] + att[3]);
+                    //G.send("p;44" + att[0] + att[1] + att[2] + att[3]);
                 }
             }
 
@@ -260,7 +260,7 @@ namespace SkyStones
 
             if (P.Y != 5)
             {
-                G.send("p;" + P.X + P.Y + att[0] + att[1] + att[2] + att[3]);
+                G.send("1" + P.X + P.Y + att[0] + att[1] + att[2] + att[3]+G.checkWin());
                 G.addCard(this, P);
                 canMove = false;
             }

@@ -39,6 +39,7 @@
             <!--<Grid Height="99" Width="114"/>-->
         </Canvas>
         <Button x:Name="resa" Content="Arrenditi" Canvas.Left="707" Canvas.Top="687" Width="75" Click="resa_Click"/>
+        <Label x:Name="stato" Content="Label" Canvas.Left="215" Canvas.Top="684"/>
 
     </Canvas>
 
